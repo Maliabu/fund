@@ -80,7 +80,7 @@ const initialize = async () => {
         email:Email,
       });
       const { user } = response.data;
- 
+
       dispatch({
         type: 'INITIALIZE',
         payload: {

@@ -21,6 +21,7 @@ const AddProductButton = () => {
   const [minimumDeposit, setMinimumDeposit] = useState("");
   const [numberOfUnits, setNumberOfUnits] = useState("");
   const [interestRate, setInterestRate] = useState("");
+    const [Management, setManagement] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -51,10 +52,11 @@ const AddProductButton = () => {
       mini:minimumDeposit,
      units: numberOfUnits,
 Intrest:interestRate,
+fee: Management,
       selectedOptions:selectedOption,
     })
       .then((response) => {
-        console.log(response.data)
+       
         if(response.data.success === true){
           setProcessing(false);
           window.location.reload();
@@ -159,6 +161,16 @@ Intrest:interestRate,
               margin="normal"
               error={error && !interestRate}
               helperText={error && !interestRate && "Interest rate is required"}
+            />
+                        <TextField
+              label="Management fees in %"
+              type="number"
+              value={Management}
+              onChange={(e) => setManagement(e.target.value)}
+              fullWidth
+              margin="normal"
+              error={error && !Management}
+              helperText={error && ! Management && "Fees are required"}
             />
             <TextField
               select

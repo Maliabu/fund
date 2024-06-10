@@ -1,4 +1,5 @@
 
+
 import {
   Box,
   Card,
@@ -24,10 +25,9 @@ import useAuth from '../../../../hooks/useAuth';
 export default function EcommerceBestSalesman() {
 
   const { user } = useAuth();
-  const fund = user.investmentPerformance;
+  const fund = user.fundV.fundusers;
   const {currency} = user;
   
-
 
   const handleRowClick = (row) => {
     // Store the clicked row in local storage
@@ -49,7 +49,7 @@ export default function EcommerceBestSalesman() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fund.map((row, index) => (
+              {fund && fund.map((row, index) => (
                 <TableRow key={row.name}>
                   <TableCell onClick={() => {
                   
@@ -60,8 +60,8 @@ export default function EcommerceBestSalesman() {
                        <Avatar alt={row.name} src={`/covers/cover_${index % 24 + 1}.jpg`} />
                       <Box sx={{ ml: 2 }}>
                         <Typography variant="subtitle2"> {row.name}</Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                       {currency} {fCurrency(row.selling)}
+                        <Typography variantm="body2" sx={{ color: 'text.secondary' }}>
+                       {currency} {fCurrency(row.totalWorth)}
                         </Typography>
                       </Box>
                     </Box>

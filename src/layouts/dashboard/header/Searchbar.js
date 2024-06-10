@@ -1,13 +1,16 @@
 import { useState } from 'react';
-// @mui
+import axios from 'axios'; // Import axios
+
+import { Modal, Typography, Box, Input, Slide, Button, InputAdornment, ClickAwayListener } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Input, Slide, Button, InputAdornment, ClickAwayListener } from '@mui/material';
+// @mui
 // utils
 import cssStyles from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/Iconify';
 import { IconButtonAnimate } from '../../../components/animate';
-
+import {SearchUrl} from "../../../components/Url";
+import useAuth from '../../../hooks/useAuth';
 // ----------------------------------------------------------------------
 
 const APPBAR_MOBILE = 64;
@@ -31,27 +34,62 @@ const SearchbarStyle = styled('div')(({ theme }) => ({
   },
 }));
 
+const ModalContent = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: theme.palette.background.paper,
+  border: '2px solid #000',
+  boxShadow: theme.customShadows.z8,
+  p: 4,
+  outline: 'none',
+}));
+
 // ----------------------------------------------------------------------
 
 export default function Searchbar() {
   const [isOpen, setOpen] = useState(false);
-
+  const [searchResults, setSearchResults] = useState([]);
+  const [query, setQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+const { user } = useAuth();
   const handleOpen = () => {
-    setOpen((prev) => !prev);
+    setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
+  const handleSearch = () => {
+    // Make a POST request to search for users
+    axios.post(SearchUrl, {
+     search: query,
+     email: user.user.email,
+      })
+      .then(response => {
+        setSearchResults(response.data);
+        setIsModalOpen(true);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSearchResults([]);
+    setQuery('');
+  };
+
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <div>
-        {!isOpen && (
-          <IconButtonAnimate onClick={handleOpen}>
-            <Iconify icon={'eva:search-fill'} width={20} height={20} />
-          </IconButtonAnimate>
-        )}
+        <IconButtonAnimate onClick={handleOpen}>
+          <Iconify icon={'eva:search-fill'} width={20} height={20} />
+        </IconButtonAnimate>
 
         <Slide direction="down" in={isOpen} mountOnEnter unmountOnExit>
           <SearchbarStyle>
@@ -60,6 +98,8 @@ export default function Searchbar() {
               fullWidth
               disableUnderline
               placeholder="Search…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               startAdornment={
                 <InputAdornment position="start">
                   <Iconify
@@ -70,11 +110,17 @@ export default function Searchbar() {
               }
               sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
             />
-            <Button variant="contained" onClick={handleClose}>
+            <Button variant="contained" onClick={handleSearch}>
               Search
             </Button>
           </SearchbarStyle>
         </Slide>
+
+        <Modal open={isModalOpen} onClose={handleModalClose}>
+          <ModalContent>
+booom
+          </ModalContent>
+        </Modal>
       </div>
     </ClickAwayListener>
   );

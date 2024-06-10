@@ -26,7 +26,7 @@ export default function GeneralApp() {
   const { themeStretch } = useSettings();
 
 const userData = user.user;
- console.log(userData)
+ 
   return (
     <Page title="General: App">
       <Container maxWidth={themeStretch ? false : 'xl'}>

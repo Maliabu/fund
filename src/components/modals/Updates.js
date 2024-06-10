@@ -15,7 +15,7 @@ export default function UpdateFundModal({ open, onClose }) {
   const [classid, setclassid] = useState();
   useEffect(() => {
     if (bookData) {
-    
+     
       setfeez(bookData.feez);
       setclassid(JSON.parse(localStorage.getItem('selectedRow')));
     }
@@ -36,21 +36,21 @@ export default function UpdateFundModal({ open, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     setFormData({ ...formData, isProcessing: true });
 
     try {
       const response = await axios.post(investorUpdateUrl, {
         classID: classid,
-        newAmount: formData.newAmount,
         type: 'post',
         email: Email,
         bought: bookData.funddata.bought,
         rate: formData.newInterestRate,
-        newValue: formData.newAmount,
         fees: Feez,
+        selling: bookData.funddata.selling,
       });
-       console.log(response)
-      window.location.reload();
+        
+   //   window.location.reload();
       setFormData({
         newAmount: '',
         newInterestRate: '',
@@ -88,23 +88,14 @@ export default function UpdateFundModal({ open, onClose }) {
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
-            label="New Fund Value"
-            name="newAmount"
-            value={formData.newAmount}
-            onChange={handleChange}
-            required
-            margin="normal"
-            variant="outlined"
-          />
-          <TextField
-            fullWidth
-            label="New Interest Rate"
+            label="New monthly rate in %"
             name="newInterestRate"
             value={formData.newInterestRate}
             onChange={handleChange}
             required
             margin="normal"
             variant="outlined"
+            type= "number"
           />
           <DialogActions>
             <Button onClick={onClose} color="secondary">

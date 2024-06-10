@@ -22,6 +22,7 @@ export default function GeneralAnalytics() {
 
   useEffect(() => {
     if (bookData) {
+     
       setFundv(bookData.funddata);
       setN(Number(bookData.fundusers.length)); // Convert to number
     }

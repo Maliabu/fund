@@ -1,4 +1,3 @@
-
 import { Link as RouterLink } from 'react-router-dom';
 import { useEffect, useState } from 'react'; // Import useEffect and useState
 // @mui
@@ -12,8 +11,6 @@ import Image from '../../../../components/Image';
 import Iconify from '../../../../components/Iconify';
 import Scrollbar from '../../../../components/Scrollbar';
 
-// ----------------------------------------------------------------------
-
 export default function AnalyticsNewsUpdate() {
   const [myData, setMyData] = useState([]);
   const [isLoading, setIsLoading] = useState(true); 
@@ -23,7 +20,7 @@ export default function AnalyticsNewsUpdate() {
       try {
         const dataFromLocalStorage = JSON.parse(localStorage.getItem('fundUsers'));
         setMyData(dataFromLocalStorage);
-        setIsLoading(false); // Set loading status to false after data is fetched
+        setIsLoading(false); 
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -36,7 +33,7 @@ export default function AnalyticsNewsUpdate() {
 
   return (
   <Card>
-    <CardHeader title="Users in the fund" />
+  <CardHeader title="Users in the fund" />
 
     <Scrollbar>
       <Stack spacing={3} sx={{ p: 3, pr: 0 }}>
@@ -86,5 +83,4 @@ export default function AnalyticsNewsUpdate() {
 );
 }
 
-// ----------------------------------------------------------------------
 
