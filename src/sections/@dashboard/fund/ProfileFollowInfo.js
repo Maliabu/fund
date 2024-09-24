@@ -30,7 +30,7 @@ export default function ProfileFollowInfo() {
         <Stack width={1} textAlign="center">
           {/* Wrap the entire Button component with Link */}
           <a
-    href={`https://fund.cyanase.lol/fund/profile_pic/${company}`} 
+    href={`https://fund.cyanase.app/fund/profile_pic/${company}`} 
           
           
           >

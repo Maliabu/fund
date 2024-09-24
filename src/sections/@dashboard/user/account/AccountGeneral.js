@@ -30,7 +30,7 @@ export default function AccountGeneral() {
   const defaultValues = {
     displayName: userData?.username || '',
     email: userData?.email || '',
-    photoURL: `https://fund.cyanase.lol/fund/profile_pic/${  userData?.profile_picture || ''}`,
+    photoURL: `https://fund.cyanase.app/fund/profile_pic/${  userData?.profile_picture || ''}`,
 
     // Add other default values as needed
   };
@@ -219,7 +219,7 @@ export default function AccountGeneral() {
               </LoadingButton>
               <br />
             </Stack>
-            <CustomTag url={`https://fund.cyanase.lol/fundprofile?user=${defaultValues.email}`} />
+            <CustomTag url={`https://fund.cyanase.app/fundprofile?user=${defaultValues.email}`} />
 
           </Card>
         </Grid>

@@ -10,7 +10,7 @@ import Avatar from './Avatar';
 export default function MyAvatar({ ...other }) {
   const { user } = useAuth();
 const userData = user.user;
-   const Home =`https://fund.cyanase.lol/fund/profile_pic/${userData.profile_picture}`;
+   const Home =`https://fund.cyanase.app/fund/profile_pic/${userData.profile_picture}`;
     
   return (
     <Avatar

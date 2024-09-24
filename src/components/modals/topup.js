@@ -41,7 +41,7 @@ const TopupModal = ({ open, onClose }) => {
     customizations: {
       title: 'Deposit',
       description: 'Deposit on Cyanase ',
-      logo: 'https://developers.cyanase.lol/image/logh.png',
+      logo: 'https://developers.cyanase.app/image/logh.png',
     },
   };
   const handleFlutterPayment = useFlutterwave(config);

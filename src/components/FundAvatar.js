@@ -33,7 +33,7 @@ export default function FundAvatar({ ...other }) {
   
   return (
     <Avatar 
-    src={`https://fund.cyanase.lol/fund/profile_pic/${Profile}`} 
+    src={`https://fund.cyanase.app/fund/profile_pic/${Profile}`} 
 
       alt={Profile}
       color={myname? 'default' : createAvatar(myname).color}

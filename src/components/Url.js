@@ -1,4 +1,4 @@
-const server = 'fund.cyanase.lol/fund';
+const server = 'fund.cyanase.app/fund';
 export const loginUrl = `https://${server}/fund_login.php`;
 export const homeUrl = `https://${server}/fund_home.php`;
 export const investorUrl = `https://${server}/investor.php`;
