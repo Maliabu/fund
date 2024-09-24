@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Fund
 =======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -44,3 +45,6 @@ Your app is ready to be deployed.
 
 You can find detailed instructions on using Create React App and many tips in [its documentation](https://facebook.github.io/create-react-app/).
 >>>>>>> 0b14b4e (new design)
+=======
+# Fund
+>>>>>>> afdfb6dc66867684e09a3611ac84cae72dcb17ce
